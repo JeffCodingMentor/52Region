@@ -3,4 +3,8 @@
     <string name="title_cn">防疫幫手</string>
     <string name="title_en1">Coronavirus</string>
     <string name="title_en2">Prevention</string>
+    <string name="NotFinish">未完成</string>
+    <string name="Finish">已完成</string>
+    <string name="FinishHL">已接種疫苗</string>
+    <string name="NotFinishHL">未接種疫苗</string>
 </resources>
