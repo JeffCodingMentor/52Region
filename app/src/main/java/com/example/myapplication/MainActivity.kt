@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
         val btn1 = findViewById<ImageButton>(R.id.imageButton1)
         btn1.setOnClickListener {
-            var intent = Intent(this, PassportActivity::class.java)
+            val intent = Intent(this, PassportActivity::class.java)
             startActivity(intent)
         }
     }

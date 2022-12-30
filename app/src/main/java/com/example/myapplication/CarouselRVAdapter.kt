@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import java.security.AccessController.getContext
 
 class CarouselRVAdapter(private val carouselDataList: ArrayList<String>):
     RecyclerView.Adapter<CarouselRVAdapter.CarouselItemViewHolder>() {

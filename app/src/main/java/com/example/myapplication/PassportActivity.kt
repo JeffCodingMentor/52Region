@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.ImageView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 
@@ -18,9 +19,12 @@ class PassportActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_passport)
 
-//        var btn1 = findViewById<Button>(R.id.button1)
-//        var btn2 = findViewById<Button>(R.id.button2)
-//        var btn3 = findViewById<Button>(R.id.button3)
+        val btn1 = findViewById<CardView>(R.id.CardViewDoz1)
+        val btn2 = findViewById<CardView>(R.id.CardViewDoz2)
+        val btn3 = findViewById<CardView>(R.id.CardViewDoz3)
+        val btnPlus1 = findViewById<ImageButton>(R.id.ButtonPlus1)
+        val btnPlus2 = findViewById<ImageButton>(R.id.ButtonPlus2)
+        val btnPlus3 = findViewById<ImageButton>(R.id.ButtonPlus3)
 
         viewPager = findViewById(R.id.view_Pager)
         iv1 = findViewById(R.id.iv1)
@@ -64,15 +68,24 @@ class PassportActivity : AppCompatActivity() {
 
         })
 
-//        btn1.setOnClickListener {
-//            viewPager.setCurrentItem(0, true)
-//        }
-//        btn2.setOnClickListener {
-//            viewPager.setCurrentItem(1, true)
-//        }
-//        btn3.setOnClickListener {
-//            viewPager.setCurrentItem(2, true)
-//        }
+        btn1.setOnClickListener {
+            viewPager.setCurrentItem(0, true)
+        }
+        btn2.setOnClickListener {
+            viewPager.setCurrentItem(1, true)
+        }
+        btn3.setOnClickListener {
+            viewPager.setCurrentItem(2, true)
+        }
+        btnPlus1.setOnClickListener {
+            viewPager.setCurrentItem(0, true)
+        }
+        btnPlus2.setOnClickListener {
+            viewPager.setCurrentItem(1, true)
+        }
+        btnPlus3.setOnClickListener {
+            viewPager.setCurrentItem(2, true)
+        }
 
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         btnBack.setOnClickListener {
