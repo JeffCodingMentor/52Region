@@ -1,19 +1,26 @@
 package com.example.myapplication
 
+import android.app.DatePickerDialog
+import android.app.Dialog
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageButton
-import android.widget.ImageView
+import android.view.View
+import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import java.text.SimpleDateFormat
+import java.util.*
 
-class PassportActivity : AppCompatActivity() {
+class PassportActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     private lateinit var viewPager:ViewPager2
     private lateinit var iv1:ImageView
     private lateinit var iv2:ImageView
     private lateinit var iv3:ImageView
+    private lateinit var dialog: Dialog
+    private val calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +33,76 @@ class PassportActivity : AppCompatActivity() {
         val btnPlus2 = findViewById<ImageButton>(R.id.ButtonPlus2)
         val btnPlus3 = findViewById<ImageButton>(R.id.ButtonPlus3)
 
+        initViewPager()
+
+        initPinfoDialog(this)
+
+        btn1.setOnClickListener {
+            viewPager.setCurrentItem(0, true)
+        }
+        btn2.setOnClickListener {
+            viewPager.setCurrentItem(1, true)
+        }
+        btn3.setOnClickListener {
+            viewPager.setCurrentItem(2, true)
+        }
+        btnPlus1.setOnClickListener {
+            viewPager.setCurrentItem(0, true)
+        }
+        btnPlus2.setOnClickListener {
+            viewPager.setCurrentItem(1, true)
+        }
+        btnPlus3.setOnClickListener {
+            viewPager.setCurrentItem(2, true)
+        }
+
+        val btnBack = findViewById<ImageButton>(R.id.btnBack)
+        btnBack.setOnClickListener {
+            finish()
+//            onBackPressed();
+        }
+        val btnPinfo = findViewById<ImageView>(R.id.imgPersonalInfo)
+        btnPinfo.setOnClickListener {
+            dialog.show()
+        }
+        val btnCancelDialog = dialog.findViewById<Button>(R.id.cancel_dialog)
+        btnCancelDialog.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.findViewById<EditText>(R.id.edt_BthDay).setOnClickListener {
+            DatePickerDialog(this, this,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH),
+            ).show()
+        }
+    }
+
+    private fun changeColor() {
+        when(viewPager.currentItem)
+        {
+            0->
+            {
+                iv1.setBackgroundResource(R.color.active)
+                iv2.setBackgroundResource(R.color.grey)
+                iv3.setBackgroundResource(R.color.grey)
+            }
+            1->
+            {
+                iv1.setBackgroundResource(R.color.grey)
+                iv2.setBackgroundResource(R.color.active)
+                iv3.setBackgroundResource(R.color.grey)
+            }
+            2->
+            {
+                iv1.setBackgroundResource(R.color.grey)
+                iv2.setBackgroundResource(R.color.grey)
+                iv3.setBackgroundResource(R.color.active)
+            }
+        }
+    }
+
+    private fun initViewPager() {
         viewPager = findViewById(R.id.view_Pager)
         iv1 = findViewById(R.id.iv1)
         iv2 = findViewById(R.id.iv2)
@@ -67,55 +144,18 @@ class PassportActivity : AppCompatActivity() {
             }
 
         })
-
-        btn1.setOnClickListener {
-            viewPager.setCurrentItem(0, true)
-        }
-        btn2.setOnClickListener {
-            viewPager.setCurrentItem(1, true)
-        }
-        btn3.setOnClickListener {
-            viewPager.setCurrentItem(2, true)
-        }
-        btnPlus1.setOnClickListener {
-            viewPager.setCurrentItem(0, true)
-        }
-        btnPlus2.setOnClickListener {
-            viewPager.setCurrentItem(1, true)
-        }
-        btnPlus3.setOnClickListener {
-            viewPager.setCurrentItem(2, true)
-        }
-
-        val btnBack = findViewById<ImageButton>(R.id.btnBack)
-        btnBack.setOnClickListener {
-            finish()
-//            onBackPressed();
-        }
     }
 
-    fun changeColor()
-    {
-        when(viewPager.currentItem)
-        {
-            0->
-            {
-                iv1.setBackgroundResource(R.color.active)
-                iv2.setBackgroundResource(R.color.grey)
-                iv3.setBackgroundResource(R.color.grey)
-            }
-            1->
-            {
-                iv1.setBackgroundResource(R.color.grey)
-                iv2.setBackgroundResource(R.color.active)
-                iv3.setBackgroundResource(R.color.grey)
-            }
-            2->
-            {
-                iv1.setBackgroundResource(R.color.grey)
-                iv2.setBackgroundResource(R.color.grey)
-                iv3.setBackgroundResource(R.color.active)
-            }
-        }
+    private fun initPinfoDialog(context: Context) {
+        val view = View.inflate( context, R.layout.dialog_personal_info, null)
+        dialog = Dialog(context, android.R.style.Theme_DeviceDefault_Light_Dialog)
+        dialog.setTitle("個人資料")
+        dialog.setContentView(view)
+    }
+
+    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        val formatter = SimpleDateFormat("yyyy/MM/dd", Locale.US)
+        calendar.set(year, month, dayOfMonth)
+        dialog.findViewById<EditText>(R.id.edt_BthDay).setText(formatter.format(calendar.timeInMillis))
     }
 }

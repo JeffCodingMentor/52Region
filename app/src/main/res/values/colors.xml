@@ -11,4 +11,6 @@
     <color name="red">#FFFF0000</color>
     <color name="green">#FF00A616</color>
     <color name="active">#0064C6</color>
+    <color name="switch_back">#DDEEFE</color>
+    <color name="switch_sel">#0165C2</color>
 </resources>

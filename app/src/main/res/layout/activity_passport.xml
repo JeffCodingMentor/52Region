@@ -58,7 +58,7 @@
         app:cardCornerRadius="50dp">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imgPersonalInfo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FAFFFF"
@@ -206,6 +206,7 @@
                     android:layout_marginStart="12dp"
                     android:backgroundTint="@color/active"
                     android:text="1"
+                    android:textColor="@color/white"
                     android:textSize="36sp"
                     app:cornerRadius="5dp" />
 
@@ -281,6 +282,7 @@
                     android:layout_marginStart="12dp"
                     android:backgroundTint="@color/active"
                     android:text="2"
+                    android:textColor="@color/white"
                     android:textSize="36sp"
                     app:cornerRadius="5dp" />
 
@@ -356,6 +358,7 @@
                     android:layout_marginStart="12dp"
                     android:backgroundTint="@color/active"
                     android:text="3"
+                    android:textColor="@color/white"
                     android:textSize="36sp"
                     app:cornerRadius="5dp" />
 

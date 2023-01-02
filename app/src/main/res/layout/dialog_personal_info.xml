@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/person_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lbl_ChName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="中文姓名"
+        app:layout_constraintBottom_toTopOf="@+id/edt_ChName"
+        app:layout_constraintStart_toStartOf="@+id/edt_ChName" />
+
+    <EditText
+        android:id="@+id/edt_ChName"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:hint="王曉明"
+        android:maxLength="15"
+        android:textSize="16sp"
+        android:background="#DDEEFE"
+        android:singleLine="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageAvatar"/>
+
+    <TextView
+        android:id="@+id/lbl_EnName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="英文姓名"
+        app:layout_constraintBottom_toTopOf="@+id/edt_EnName"
+        app:layout_constraintStart_toStartOf="@+id/edt_EnName" />
+
+    <EditText
+        android:id="@+id/edt_EnName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="24dp"
+        android:gravity="center"
+        android:hint="Xiao Ming"
+        android:inputType="textPersonName"
+        android:maxLength="30"
+        android:textSize="16sp"
+        android:background="#DDEEFE"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_ChName"/>
+
+    <TextView
+        android:id="@+id/lbl_BthDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="出生年月日"
+        app:layout_constraintBottom_toTopOf="@+id/edt_BthDay"
+        app:layout_constraintStart_toStartOf="@+id/edt_BthDay" />
+
+    <EditText
+        android:id="@+id/edt_BthDay"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal ="24dp"
+        android:gravity="center"
+        android:hint="1996/05/22"
+        android:inputType="none"
+        android:textSize="16sp"
+        android:background="#DDEEFE"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_EnName"/>
+
+    <TextView
+        android:id="@+id/lbl_PID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="身分證字號"
+        app:layout_constraintBottom_toTopOf="@+id/edt_PID"
+        app:layout_constraintStart_toStartOf="@+id/edt_PID" />
+
+    <EditText
+        android:id="@+id/edt_PID"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="24dp"
+        android:gravity="center"
+        android:hint="J123456789"
+        android:maxLength="10"
+        android:textSize="16sp"
+        android:background="#DDEEFE"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_BthDay"/>
+
+    <TextView
+        android:id="@+id/lbl_CardNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="健保卡號"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_PID">
+
+        <EditText
+            android:id="@+id/edt_CardNo1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            android:gravity="center"
+            android:hint="0000"
+            android:inputType="number"
+            android:maxLength="4"
+            android:textSize="14sp"
+            android:background="#DDEEFE"
+            android:singleLine="true"/>
+        <EditText
+            android:id="@+id/edt_CardNo2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            android:gravity="center"
+            android:hint="1234"
+            android:inputType="number"
+            android:maxLength="4"
+            android:textSize="14sp"
+            android:background="#DDEEFE"
+            android:singleLine="true"/>
+        <EditText
+            android:id="@+id/edt_CardNo3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            android:gravity="center"
+            android:hint="5678"
+            android:inputType="number"
+            android:maxLength="4"
+            android:textSize="14sp"
+            android:background="#DDEEFE"
+            android:singleLine="true"/>
+        <EditText
+            android:id="@+id/edt_CardNo4"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="4321"
+            android:inputType="number"
+            android:maxLength="4"
+            android:textSize="14sp"
+            android:background="#DDEEFE"
+            android:singleLine="true"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/cancel_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="#00FFFFFF"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#989898"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.507"
+        app:strokeColor="#989898" />
+
+    <Button
+        android:id="@+id/save_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:gravity="center"
+        android:text="確認"
+        android:textColor="#56A86A"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.671"
+        app:layout_constraintStart_toEndOf="@+id/cancel_dialog"
+        app:layout_constraintTop_toTopOf="@+id/cancel_dialog"
+        app:strokeColor="#56A86A" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:background="@drawable/switch_outline"
+        android:checkedButton="@+id/male"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/edt_ChName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edt_ChName"
+        app:layout_constraintTop_toTopOf="@+id/edt_ChName">
+
+        <RadioButton
+            android:id="@+id/male"
+            android:background="@drawable/switch_male"
+            android:textColor="@drawable/switch_text"
+            android:button="@null"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_width="48dp"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:text="男" />
+
+        <RadioButton
+            android:id="@+id/female"
+            android:background="@drawable/switch_female"
+            android:textColor="@drawable/switch_text"
+            android:button="@null"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_width="48dp"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:text="女" />
+
+    </RadioGroup>
+</androidx.constraintlayout.widget.ConstraintLayout>
