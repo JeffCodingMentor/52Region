@@ -1,6 +1,8 @@
 package com.example.myapplication
 
 import android.app.DatePickerDialog
+import android.content.SharedPreferences
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -8,7 +10,9 @@ import android.text.TextWatcher
 import android.util.Log
 import android.widget.DatePicker
 import android.widget.Toast
+import androidx.core.net.toUri
 import com.example.myapplication.databinding.ActivityUserInfoBinding
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -16,11 +20,16 @@ class UserInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
     private lateinit var binding:ActivityUserInfoBinding
     private val calendar = Calendar.getInstance()
+    private lateinit var sharedPref: SharedPreferences
+    private lateinit var img_uri: Uri
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserInfoBinding.inflate((layoutInflater))
         setContentView(binding.root)
+        sharedPref = getSharedPreferences("myPref", MODE_PRIVATE)
+        initForm()
 
         binding.edtPID.setOnFocusChangeListener {_, hasFocus ->
             if(!hasFocus){
@@ -90,4 +99,33 @@ class UserInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         calendar.set(year, month, dayOfMonth)
         binding.edtBday.text = formatter.format(calendar.timeInMillis)
     }
+
+    private fun initForm() {
+        val img_path = sharedPref.getString("imguri","")
+        Log.w("BindingEX", "init str: $img_path")
+        if(img_path != null) {
+            if (img_path!="") {
+//              img_uri = Uri.parse(img_path)    //沒有用!!
+                img_uri = File(img_path).toUri() //要到手機裡開權限
+                binding.imgAvatar.setImageURI(img_uri)
+                Log.w("BindingEX", "init uri: $img_uri")
+            }
+        }
+
+        if(sharedPref.getBoolean("male",true)) {
+            binding.radioMale.isChecked = true
+        } else {
+            binding.radioFemale.isChecked = true
+        }
+
+        binding.edtChName.setText(sharedPref.getString("chname",""))
+        binding.edtEnName.setText(sharedPref.getString("enname",""))
+        binding.edtPID.setText(sharedPref.getString("pid",""))
+        binding.edtBday.text = sharedPref.getString("bday","")
+        binding.edtCNo1.setText(sharedPref.getString("cno1",""))
+        binding.edtCNo2.setText(sharedPref.getString("cno2",""))
+        binding.edtCNo3.setText(sharedPref.getString("cno3",""))
+        binding.edtCNo4.setText(sharedPref.getString("cno4",""))
+    }
+
 }
