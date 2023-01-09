@@ -1,27 +1,19 @@
 package com.example.myapplication
 
-import android.app.DatePickerDialog
-import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import java.text.SimpleDateFormat
-import java.util.*
 
-class PassportActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
+class PassportActivity : AppCompatActivity() {
 
     private lateinit var viewPager:ViewPager2
     private lateinit var iv1:ImageView
     private lateinit var iv2:ImageView
     private lateinit var iv3:ImageView
-    private lateinit var dialog: Dialog
-    private val calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +27,6 @@ class PassportActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         val btnPlus3 = findViewById<ImageButton>(R.id.ButtonPlus3)
 
         initViewPager()
-
-//        initPinfoDialog(this)
 
         btn1.setOnClickListener {
             viewPager.setCurrentItem(0, true)
@@ -67,17 +57,6 @@ class PassportActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             val intent = Intent(this, UserInfoActivity::class.java)
             startActivity(intent)
         }
-//        val btnCancelDialog = dialog.findViewById<Button>(R.id.cancel_dialog)
-//        btnCancelDialog.setOnClickListener {
-//            dialog.dismiss()
-//        }
-//        dialog.findViewById<EditText>(R.id.edt_Bday).setOnClickListener {
-//            DatePickerDialog(this, this,
-//                calendar.get(Calendar.YEAR),
-//                calendar.get(Calendar.MONTH),
-//                calendar.get(Calendar.DAY_OF_MONTH),
-//            ).show()
-//        }
     }
 
     private fun changeColor() {
@@ -146,18 +125,5 @@ class PassportActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             }
 
         })
-    }
-
-//    private fun initPinfoDialog(context: Context) {
-//        val view = View.inflate( context, R.layout.dialog_personal_info, null)
-//        dialog = Dialog(context, android.R.style.Theme_DeviceDefault_Light_Dialog)
-//        dialog.setTitle("個人資料")
-//        dialog.setContentView(view)
-//    }
-
-    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        val formatter = SimpleDateFormat("yyyy/MM/dd", Locale.US)
-        calendar.set(year, month, dayOfMonth)
-        dialog.findViewById<EditText>(R.id.edt_Bday).setText(formatter.format(calendar.timeInMillis))
     }
 }
