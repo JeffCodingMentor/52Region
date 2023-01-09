@@ -10,16 +10,27 @@
     android:layout_height="match_parent"
     tools:context=".UserInfoActivity">
 
-    <ImageView
-        android:id="@+id/img_avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:src="@mipmap/ic_launcher_round"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toTopOf="@+id/edt_ChName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_marginTop="12dp"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="0dp">
+
+        <ImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true"
+            android:src="@mipmap/ic_launcher_round"/>
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/lbl_ChName"
@@ -42,7 +53,7 @@
         android:background="@drawable/edtxt_round_corner"
         android:singleLine="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_avatar"/>
+        app:layout_constraintTop_toBottomOf="@+id/card_img"/>
 
     <TextView
         android:id="@+id/lbl_EnName"
@@ -192,7 +203,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/cancel_dialog"
+        android:id="@+id/btn_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
@@ -222,8 +233,8 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.671"
-        app:layout_constraintStart_toEndOf="@+id/cancel_dialog"
-        app:layout_constraintTop_toTopOf="@+id/cancel_dialog"
+        app:layout_constraintStart_toEndOf="@+id/btn_cancel"
+        app:layout_constraintTop_toTopOf="@+id/btn_cancel"
         app:strokeColor="#56A86A" />
 
     <RadioGroup
