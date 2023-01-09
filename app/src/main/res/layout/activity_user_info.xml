@@ -88,21 +88,35 @@
         app:layout_constraintBottom_toTopOf="@+id/edt_Bday"
         app:layout_constraintStart_toStartOf="@+id/edt_Bday" />
 
-    <EditText
+<!--    <EditText-->
+<!--        android:id="@+id/edt_Bday"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_marginHorizontal ="24dp"-->
+<!--        android:gravity="center"-->
+<!--        android:hint="1996/05/22"-->
+<!--        android:inputType="none"-->
+<!--        android:textSize="16sp"-->
+<!--        android:background="@drawable/edtxt_round_corner"-->
+<!--        android:singleLine="true"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/edt_EnName"/>-->
+
+    <Button
         android:id="@+id/edt_Bday"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginHorizontal ="24dp"
+        android:background="#DDEEFE"
         android:gravity="center"
         android:hint="1996/05/22"
-        android:inputType="none"
         android:textSize="16sp"
-        android:background="@drawable/edtxt_round_corner"
-        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_EnName"/>
+        app:layout_constraintTop_toBottomOf="@+id/edt_EnName" />
 
     <TextView
         android:id="@+id/lbl_PID"
@@ -223,7 +237,7 @@
         app:strokeColor="#989898" />
 
     <Button
-        android:id="@+id/save_info"
+        android:id="@+id/btn_Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
