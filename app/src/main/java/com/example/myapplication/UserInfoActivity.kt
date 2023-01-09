@@ -23,7 +23,6 @@ class UserInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
     private lateinit var sharedPref: SharedPreferences
     private lateinit var img_uri: Uri
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserInfoBinding.inflate((layoutInflater))
@@ -35,7 +34,7 @@ class UserInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             if(!hasFocus){
                 val str = binding.edtPID.text
                 if(!str?.matches("^[A-Za-z][0-9]{9}$".toRegex())!!) {
-                    Toast.makeText(this, "請輸入正確身分證號碼", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.PromptPID, Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -92,6 +91,38 @@ class UserInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             finish()
         }
 
+        binding.btnSave.setOnClickListener {
+            var valid = booleanArrayOf(false,false,false,false,false,false,false,false)
+
+            valid[0]= binding.edtChName.text?.length!! > 0
+            valid[1]= binding.edtEnName.text?.length!! > 0
+            valid[2]= binding.edtPID.text?.matches("^[A-Za-z][0-9]{9}$".toRegex())!!
+            valid[3]= binding.edtBday.text?.matches("^\\d{4}/\\d{2}/\\d{2}$".toRegex())!!
+            valid[4]= binding.edtCNo1.text?.length == 4
+            valid[5]= binding.edtCNo2.text?.length == 4
+            valid[6]= binding.edtCNo3.text?.length == 4
+            valid[7]= binding.edtCNo4.text?.length == 4
+
+            if(valid.all{it}) {
+                val editor = sharedPref.edit()
+                editor.putString("chname",binding.edtChName.text.toString())
+                editor.putString("enname",binding.edtEnName.text.toString())
+                editor.putString("pid",binding.edtPID.text.toString())
+                editor.putString("bday",binding.edtBday.text.toString())
+                editor.putString("cno1",binding.edtCNo1.text.toString())
+                editor.putString("cno2",binding.edtCNo2.text.toString())
+                editor.putString("cno3",binding.edtCNo3.text.toString())
+                editor.putString("cno4",binding.edtCNo4.text.toString())
+                editor.putBoolean("male",binding.edtGender.checkedRadioButtonId == R.id.radio_male)
+                editor.apply()
+                finish()
+                Toast.makeText(this, R.string.PromptSaveOK, Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Toast.makeText(this, R.string.PromotEmpty, Toast.LENGTH_SHORT).show()
+            }
+        }
+
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
@@ -102,13 +133,13 @@ class UserInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
     private fun initForm() {
         val img_path = sharedPref.getString("imguri","")
-        Log.w("BindingEX", "init str: $img_path")
+        Log.w("UserInfo", "init str: $img_path")
         if(img_path != null) {
             if (img_path!="") {
 //              img_uri = Uri.parse(img_path)    //沒有用!!
                 img_uri = File(img_path).toUri() //要到手機裡開權限
                 binding.imgAvatar.setImageURI(img_uri)
-                Log.w("BindingEX", "init uri: $img_uri")
+                Log.w("UserInfo", "init uri: $img_uri")
             }
         }
 
