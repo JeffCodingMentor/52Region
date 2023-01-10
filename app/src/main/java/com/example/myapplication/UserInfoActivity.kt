@@ -152,7 +152,7 @@ class UserInfoActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
                 Toast.makeText(this, R.string.PromptSaveOK, Toast.LENGTH_SHORT).show()
             }
             else {
-                Toast.makeText(this, R.string.PromotEmpty, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.PromptEmpty, Toast.LENGTH_SHORT).show()
             }
         }
 

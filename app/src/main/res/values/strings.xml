@@ -8,7 +8,7 @@
     <string name="FinishHL">已接種疫苗</string>
     <string name="NotFinishHL">未接種疫苗</string>
     <string name="PromptPID">請輸入正確身分證號碼</string>
-    <string name="PromotEmpty">確認填寫資料</string>
+    <string name="PromptEmpty">確認填寫資料</string>
     <string name="PromptSaveOK">儲存成功</string>
     <string name="PromptPermDenied">拒絕讀取權限</string>
 </resources>
