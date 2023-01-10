@@ -70,18 +70,32 @@
         app:layout_constraintTop_toTopOf="@+id/imageButton">
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/text_semiround"
+        android:gravity="center_vertical"
+        android:text="　　　　時間　　　　　　　　場所代碼"
+        android:textColor="#FF039A19"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
         android:layout_marginBottom="-20dp"
         android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@id/imageButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
     <ImageButton
         android:id="@+id/imageButton4"

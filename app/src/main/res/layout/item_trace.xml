@@ -27,12 +27,14 @@
                 android:id="@+id/tv_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#FF039A19"
                 android:text="2022/03/27" />
 
             <TextView
                 android:id="@+id/tv_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#FF039A19"
                 android:text="14:32 PM" />
         </LinearLayout>
 
