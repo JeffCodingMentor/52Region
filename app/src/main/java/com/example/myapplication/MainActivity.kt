@@ -15,5 +15,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, PassportActivity::class.java)
             startActivity(intent)
         }
+
+        val btn2 = findViewById<ImageButton>(R.id.imageButton2)
+        btn2.setOnClickListener {
+            val intent = Intent(this, TraceActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
