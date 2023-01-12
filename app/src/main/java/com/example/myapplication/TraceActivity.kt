@@ -1,6 +1,8 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.database.Cursor
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
@@ -10,25 +12,17 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class TraceActivity : AppCompatActivity() {
+
+    private val TraceArr: ArrayList<TraceRecord> = ArrayList()
+    private lateinit var recyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trace)
 
-        val TraceArr = arrayListOf <TraceRecord>(
-            TraceRecord("2022/03/27","14:10","1231 2332 3133"),
-            TraceRecord("2022/03/27","14:20","1231 2332 3155"),
-            TraceRecord("2022/03/27","14:30","1231 2332 3136"),
-            TraceRecord("2022/03/27","14:40","1231 2332 3137"),
-            TraceRecord("2022/03/27","14:50","1231 2332 3138"),
-            TraceRecord("2022/03/27","14:10","1231 2332 3133"),
-            TraceRecord("2022/03/27","14:20","1231 2332 3155"),
-            TraceRecord("2022/03/27","14:30","1231 2332 3136"),
-            TraceRecord("2022/03/27","14:40","1231 2332 3137"),
-            TraceRecord("2022/03/27","14:50","1231 2332 3138"),
-            TraceRecord("2022/03/27","14:40","1231 2332 9999")
-                )
+        initData()
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
+        recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView.layoutManager = linearLayoutManager
@@ -48,5 +42,34 @@ class TraceActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initData()
+        recyclerView.adapter = TraceAdapter(TraceArr)
+    }
+
+    @SuppressLint("Range")
+    private fun initData() {
+        val db = DBmain(this)
+        val cursor: Cursor?
+        TraceArr.clear()
+
+        try {
+            cursor = db.readableDatabase.rawQuery("SELECT * FROM record", null)
+        } catch (e: java.lang.Exception) {
+            return
+        }
+
+        if(cursor.moveToFirst()){
+            do {
+                val code = cursor.getString(cursor.getColumnIndex("code"))
+                val date = cursor.getString(cursor.getColumnIndex("date"))
+                val time = cursor.getString(cursor.getColumnIndex("time"))
+                val tr = TraceRecord(date, time, code)
+                TraceArr.add(tr)
+            } while (cursor.moveToNext())
+        }
     }
 }

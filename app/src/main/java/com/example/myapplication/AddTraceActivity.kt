@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -9,6 +10,7 @@ import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TimePicker
 import android.widget.Toast
+import androidx.core.content.contentValuesOf
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -60,7 +62,19 @@ class AddTraceActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
                 OK = OK && false
             }
             if(OK){
-                Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show()
+                val db = DBmain(this)
+                val contentValues = ContentValues()
+                contentValues.put("code", edtCode.text.toString())
+                contentValues.put("date", btnDate.text.toString())
+                contentValues.put("time", btnTime.text.toString())
+                val success = db.writableDatabase.insert("record", null, contentValues)
+                if(success>-1){
+                    Toast.makeText(this, "Save OK", Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    Toast.makeText(this, "Save Failed", Toast.LENGTH_SHORT).show()
+                }
+
                 finish()
             }
         }
