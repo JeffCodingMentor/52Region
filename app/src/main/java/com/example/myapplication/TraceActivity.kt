@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
@@ -40,5 +41,12 @@ class TraceActivity : AppCompatActivity() {
         btnBack.setOnClickListener {
             finish()
         }
+
+        val btnAddTrace = findViewById<ImageButton>(R.id.btn_addtrace)
+        btnAddTrace.setOnClickListener {
+            val intent = Intent(this, AddTraceActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

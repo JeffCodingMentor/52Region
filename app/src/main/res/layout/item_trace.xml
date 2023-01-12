@@ -46,5 +46,14 @@
             android:gravity="center"
             android:text="1234 2234 3234 4234" />
 
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:background="@color/red"
+            android:textColor="@color/white"
+            android:text="刪除"/>
+
     </LinearLayout>
 </LinearLayout>

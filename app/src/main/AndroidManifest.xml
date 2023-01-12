@@ -16,7 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
-
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
@@ -56,6 +55,15 @@
             android:name=".UserInfoActivity"
             android:exported="false"
             android:label="個人資料"
+            android:theme="@style/Theme.AppCompat.Light.Dialog">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AddTraceActivity"
+            android:exported="false"
+            android:label="新增實聯制"
             android:theme="@style/Theme.AppCompat.Light.Dialog">
             <meta-data
                 android:name="android.app.lib_name"

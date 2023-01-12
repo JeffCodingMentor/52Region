@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddTraceActivity">
+
+    <TextView
+        android:id="@+id/lbl_Code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="場所代碼"
+        app:layout_constraintBottom_toTopOf="@+id/edt_Code"
+        app:layout_constraintStart_toStartOf="@+id/edt_Code" />
+
+    <EditText
+        android:id="@+id/edt_Code"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginHorizontal="32dp"
+        android:gravity="center"
+        android:hint="1234 2234 3234 4234"
+        android:inputType="number"
+        android:maxLength="22"
+        android:textSize="16sp"
+        android:background="@drawable/edtxt_round_corner"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/lbl_Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="日 期"
+        app:layout_constraintBottom_toTopOf="@+id/edt_Date"
+        app:layout_constraintStart_toStartOf="@+id/edt_Date" />
+
+    <Button
+        android:id="@+id/edt_Date"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="32dp"
+        android:background="#DDEEFE"
+        android:gravity="center"
+        android:hint="2022/03/27"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_Code" />
+
+    <TextView
+        android:id="@+id/lbl_Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="時 間"
+        app:layout_constraintBottom_toTopOf="@+id/edt_Time"
+        app:layout_constraintStart_toStartOf="@+id/edt_Time" />
+
+    <Button
+        android:id="@+id/edt_Time"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="32dp"
+        android:background="#DDEEFE"
+        android:gravity="center"
+        android:hint="09:30 AM"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_Date" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="#00FFFFFF"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#989898"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_Time"
+        app:strokeColor="#989898" />
+
+    <Button
+        android:id="@+id/btn_Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:gravity="center"
+        android:text="確認"
+        android:textColor="#56A86A"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_cancel"
+        app:layout_constraintTop_toTopOf="@+id/btn_cancel"
+        app:strokeColor="#56A86A" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
