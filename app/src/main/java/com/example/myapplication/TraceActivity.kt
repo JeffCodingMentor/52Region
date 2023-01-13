@@ -1,10 +1,17 @@
 package com.example.myapplication
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.database.Cursor
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,7 +33,7 @@ class TraceActivity : AppCompatActivity() {
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView.layoutManager = linearLayoutManager
-        recyclerView.adapter = TraceAdapter(TraceArr)
+        recyclerView.adapter = TraceAdapter(TraceArr, this)
         recyclerView.addItemDecoration(
             DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         )
@@ -47,7 +54,7 @@ class TraceActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         initData()
-        recyclerView.adapter = TraceAdapter(TraceArr)
+        recyclerView.adapter = TraceAdapter(TraceArr, this)
     }
 
     @SuppressLint("Range")
@@ -64,10 +71,11 @@ class TraceActivity : AppCompatActivity() {
 
         if(cursor.moveToFirst()){
             do {
+                val id = cursor.getInt(cursor.getColumnIndex("id"))
                 val code = cursor.getString(cursor.getColumnIndex("code"))
                 val date = cursor.getString(cursor.getColumnIndex("date"))
                 val time = cursor.getString(cursor.getColumnIndex("time"))
-                val tr = TraceRecord(date, time, code)
+                val tr = TraceRecord(id, date, time, code)
                 TraceArr.add(tr)
             } while (cursor.moveToNext())
         }
