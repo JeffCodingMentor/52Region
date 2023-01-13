@@ -64,7 +64,8 @@ class TraceActivity : AppCompatActivity() {
         TraceArr.clear()
 
         try {
-            cursor = db.readableDatabase.rawQuery("SELECT * FROM record", null)
+//            cursor = db.readableDatabase.rawQuery("SELECT * FROM record", null)
+            cursor = db.readableDatabase.rawQuery("SELECT * FROM record ORDER BY date DESC, time DESC", null)
         } catch (e: java.lang.Exception) {
             return
         }
